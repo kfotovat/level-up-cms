@@ -1,0 +1,68 @@
+[
+{
+  "model": "main.course",
+  "pk": 1,
+  "fields": {
+    "course_name": "Origami",
+    "teacher_name": 2,
+    "block_order": 1,
+    "start_time": "09:00",
+    "end_time": "09:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 2,
+  "fields": {
+    "course_name": "World History",
+    "teacher_name": 2,
+    "block_order": 2,
+    "start_time": "10:00",
+    "end_time": "10:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 3,
+  "fields": {
+    "course_name": "Algebra II",
+    "teacher_name": 2,
+    "block_order": 3,
+    "start_time": "11:00",
+    "end_time": "11:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 4,
+  "fields": {
+    "course_name": "Volleyball",
+    "teacher_name": 3,
+    "block_order": 1,
+    "start_time": "08:00",
+    "end_time": "08:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 5,
+  "fields": {
+    "course_name": "Economics",
+    "teacher_name": 3,
+    "block_order": 2,
+    "start_time": "09:00",
+    "end_time": "09:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 6,
+  "fields": {
+    "course_name": "Life Sciences",
+    "teacher_name": 3,
+    "block_order": 3,
+    "start_time": "10:00",
+    "end_time": "10:55"
+  }
+},
+]

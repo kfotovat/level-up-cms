@@ -1,0 +1,85 @@
+<!-- custom form approach -->
+{% extends "base.html" %}
+{% block content %}
+
+{% include "includes/student-splash.html" %}
+
+  <div class="container">
+    <div class="well" style="background-color: LightBlue; padding: 20px;">
+      <h2>PLS Tracking Sheet</h2>
+      <!-- 	form tags should include method (GET, POST) and action if routed to different URL
+      -->
+      <form method="" action="">
+      <fieldset>
+      <legend>Middle School<br>Student View<br>Full (screen width > 1000px)</legend>
+      <div class="row" style="padding: 20px;">
+        <h2><span style="background-color: RoyalBlue; color: white; padding: 10px;">Behavior</span></h2>
+      </div>
+      <div class="behaviorLabels" style="margin: 0 auto; text-align: center;">
+          <span><h3 style="display: inline-block; word-wrap: break-word; width: 20%;">Needs Improvement</h3></span>
+          <label class="radio-inline" for="behavior1" style="width: 10%;">
+            <input type="radio" name="radBehavior" id="behavior1" value="1"><strong>1</strong>
+          </label>
+          <label class="radio-inline" for="behavior2" style="width: 10%;">
+            <input type="radio" name="radBehavior" id="behavior2" value="2"><strong>2</strong>
+          </label>
+          <label class="radio-inline" for="behavior3" style="width: 10%;">
+            <input type="radio" name="radBehavior" id="behavior3" value="3"><strong>3</strong>
+          </label>
+          <label class="radio-inline" for="behavior4" style="width: 10%;">
+            <input type="radio" name="radBehavior" id="behavior4" value="4"><strong>4</strong>
+          </label>
+          <label class="radio-inline" for="behavior5" style="width: 10%;">
+            <input type="radio" name="radBehavior" id="behavior5" value="5"><strong>5</strong>
+          </label>
+          <span><h3 style="display: inline-block; word-wrap: break-word; width: 20%;">Exceeds</h3></span>
+          <div class="clear" style="clear: both;"></div>
+      </div>
+      <div class="row" style="padding: 20px;">
+        <h2><span style="background-color: RoyalBlue; color: white; padding: 10px;">Behavior Levels</span></h2>
+      </div>
+      <hr>
+      <div class="row" style="padding: 20px; padding-bottom: 10px;">
+        <h2><span style="background-color: RoyalBlue; color: white; padding: 10px;">Assessment Markers</span></h2>
+      </div>
+      <div class="AssessmentLabels" style="margin: 0 auto;">
+          <div class="AssessmentMarkers" style="display: block; word-wrap: break-word; padding: 20px;">
+            <div class="row" style="padding-left: 50px;">
+              <h3 style="width: 60%; display: inline-block;">
+              <span></span>
+              </h3>
+              <span style="width: 15%; display: inline-block; text-align: center;"><h3>Yes</h3></span>
+              <span style="width: 15%; display: inline-block; text-align: center;"><h3>No</h3></span>
+            </div>
+            <div class="row" style="padding-left: 50px;">
+              <h3 style="width: 60%; display: inline-block;">On Time</h3>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="onTime" id="onTime1" value="1" checked></span>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="onTime" id="onTime0" value="0"></span>
+            </div>
+            <div class="row" style="padding-left: 50px; background-color: SkyBlue;">
+              <h3 style="width: 60%; display: inline-block;">Proper Use of Electronics</h3>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="electronics" id="electronics1" value="1" checked></span>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="electronics" id="electronics0" value="0"></span>
+            </div>
+            <div class="row" style="padding-left: 50px;">
+              <h3 style="width: 60%; display: inline-block;">Working Toward Personal Goals</h3>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="personalGoals" id="personalGoals1" value="1" checked></span>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="personalGoals" id="personalGoals0" value="0"></span>
+            </div>
+            <div class="row" style="padding-left: 50px; background-color: SkyBlue;">
+              <h3 style="width: 60%; display: inline-block;">Leaves Classroom Appropriately</h3>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="leavesClassroom" id="leavesClassroom1" value="1" checked></span>
+              <span style="width: 15%; display: inline-block; text-align: center;"><input type="radio" name="leavesClassroom" id="leavesClassroom0" value="0"></span>
+            </div>
+          </div>
+      </div>
+      </fieldset>
+      <hr>
+      <input class="btn btn-lg btn-primary" type="submit" value="Submit"></input>
+      <input class="btn btn-md btn-success" type="submit" value="Save"></input>
+      <input class="btn btn-md btn-default" type="submit" value="Clear"></input>
+      </form>
+    </div>
+
+</div>
+{% endblock %}

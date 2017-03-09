@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Add New Course{% endblock %}
+
+{% block content %}
+<div class="container navpush">
+	<div class="row">
+		<div class="col-sm-12 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+						{% csrf_token %}
+						{% include 'form_template.html' %}
+						<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<!-- Post New Course -->
+							<form method="post" style="display: inline" action="">
+								{% csrf_token %}
+								<!-- <input type="hidden" name="album_pk" value="{{ course.pk }}"/> -->
+								<button type="submit" class="btn btn-primary">Save</button>
+							</form>
+							<a href="{% url 'teacher-courses' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-default" value="Back to Course List"></a>
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

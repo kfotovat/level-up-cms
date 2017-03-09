@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}{{ course.course_name }}{% endblock %}
+
+
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h4>{{ course.teacher_name }}</h4>
+				</div>
+				<div class="panel-body">
+					<h2>{{ course.course_name }}</h2>
+
+				<table class="table">
+				<tbody>
+					<tr>
+						<td><strong>Schedule Order</strong></td>
+						<td>{{ course.block_order }}</td>
+					</tr>
+					<tr>
+						<td><strong>Start Time</strong></td>
+						<td>{{ course.start_time|time:"g:i a" }}</td>
+					</tr>
+					<tr>
+						<td><strong>End Time</strong></td>
+						<td>{{ course.end_time|time:"g:i a" }}</td>
+					</tr>
+				</tbody>
+
+				</table>
+					<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<!-- Update Course -->
+							<a href="{% url 'update-course' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-primary" value="Update Course Info"></a>
+							<!-- List Students -->
+							<a href="{# url 'course-students' course.pk #}"><input type="button" class="btn btn-primary" value="List Students"></a>
+							<!-- Return to Course List -->
+							<a href="{% url 'teacher-courses' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-default" value="Back to Course List"></a>
+							<!-- Delete Course -->
+							<form method="post" style="display: inline"
+							action="{% url 'delete-course' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}">
+								{% csrf_token %}
+								<!-- {{ form.as_p }} -->
+								<!-- <input type="hidden" name="course_pk" value="{{ course.pk }}"/> -->
+								<input type="hidden" name="username" value="{{ request.user.username }}"/>
+								<input type="hidden" name="login_type" value="{{ request.user.profile.get_role }}"/>
+								<input type="hidden" name="school_slug" value="{{ request.user.profile.school.slug }}"/>
+								<button type="submit" class="btn btn-default">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</form>
+						</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

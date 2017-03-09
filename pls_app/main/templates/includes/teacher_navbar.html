@@ -1,0 +1,44 @@
+{% load staticfiles %}
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+     <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navHeaderCollapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="{% static 'img/pls_avatar.jpg' %}">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navHeaderCollapse">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url 'teacher-courses' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}">My Classes</a></li>
+        <li><a href="{# url 'welcome' #}">My Reports</a></li>
+        <li><a href="{# url 'welcome' #}">My History</a></li>
+      </ul>
+      <!-- this much is shared by main_navbar when user is logged in -->
+      <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ request.user.profile }}<span class="caret"></a>
+        <ul class="dropdown-menu">
+          <li class="text-center">
+            <a href="{% url 'welcome' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}">My Profile</a></li>
+          <li class="text-center">
+            <a href="#">Account Info</a></li>
+          <li role="separator" class="divider"></li>
+          <li class="text-center">
+            <a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+    </div><!-- /.navbar-collapse -->
+
+  </div>
+</nav>
+{% endblock %}

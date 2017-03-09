@@ -1,0 +1,25 @@
+{% extends 'clean.html' %}
+
+{% block content %}
+<div class="container">
+<h2>Login</h2>
+<h3>{{ title }}</h3>
+<form method="post" action="{% url 'login' %}">
+<!-- <form method="post" action="{# url 'welcome' school_slug username #}"> -->
+  {% csrf_token %}
+
+  <p><strong>{{ error_message }}</strong></p>
+  <p><strong>{{ form.non_field_errors }}</strong></p>
+
+  {{ form.as_p }}
+  <button type="submit">Login</button>
+</form>
+</div>
+</br>
+</br>
+</br>
+<div class="container">
+  <a href={% url 'home' %}><h4>Home</h4></a>
+</div>
+
+{% endblock %}

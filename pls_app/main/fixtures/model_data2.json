@@ -1,0 +1,76 @@
+[
+{
+  "model": "main.school",
+  "pk": 1,
+  "fields": {
+    "name": "Demo School",
+  	"school_type": 3,
+  	"address": "123 Main Street",
+    "city": "Albuquerque",
+  	"contact_name": "Steve Kerr"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "school": 1,
+    "role": 2
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "school": 1,
+    "role": 2
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "school": 1,
+    "role": 2
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "school": 1,
+    "role": 1
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 5,
+  "fields": {
+    "user": 5,
+    "school": 1,
+    "role": 1
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 6,
+  "fields": {
+    "user": 6,
+    "school": 1,
+    "role": 1
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 7,
+  "fields": {
+    "user": 7,
+    "school": 1,
+    "role": 1
+  }
+}
+]

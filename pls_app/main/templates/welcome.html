@@ -1,0 +1,27 @@
+{% extends 'clean.html' %}
+
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container">
+  {% if username %}
+    <h2>Welcome, {{ request.user.get_full_name }}!</h2>
+    <h2>Thanks for being one of our {{ request.user.profile.get_role }} at
+      {{ request.user.profile.school.name }}!</h2>
+  {% else %}
+    <h3>This the generic user-welcome view. No user ({{ username }}) logged in.</h3>
+  {% endif %}
+</div>
+
+<div class="container">
+  <h3>Week in Review</h3>
+    <p>content coming soon...</p>
+  <h3>Stats at a glance...</h3>
+    <p>content coming soon...</p>
+  <h3>Recent Activity</h3>
+    <p>content coming soon...</p>
+</div>
+
+{% endblock %}

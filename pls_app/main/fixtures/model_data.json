@@ -1,0 +1,226 @@
+[
+{
+  "model": "main.school",
+  "pk": 1,
+  "fields": {
+    "name": "Demo School",
+    "slug": "demo-school",
+  	"school_type": 3,
+  	"address": "123 Main Street",
+    "city": "Albuquerque",
+  	"contact_name": "Steve Kerr"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "username": "karl",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "is_staff": "True",
+    "is_superuser": "True",
+    "first_name": "Karl",
+    "last_name": "Fotovat",
+    "email": "karlfotovat@gmail.com"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 1,
+  "fields": {
+    "user": 1,
+    "school": 1,
+    "role": 2
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "username": "jriemen",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "first_name": "Jennifer",
+    "last_name": "Riemen",
+    "email": "archgirl99@comcast.net"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 2,
+  "fields": {
+    "user": 2,
+    "school": 1,
+    "role": 2
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "username": "ssmith",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "first_name": "Sunita",
+    "last_name": "Smith",
+    "email": "pinkypsycho@yahoo.com"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 3,
+  "fields": {
+    "user": 3,
+    "school": 1,
+    "role": 2
+  }
+},
+{
+  "model": "main.course",
+  "pk": 1,
+  "fields": {
+    "course_name": "Origami",
+    "teacher_name": 2,
+    "block_order": 1,
+    "start_time": "09:00",
+    "end_time": "09:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 2,
+  "fields": {
+    "course_name": "World History",
+    "teacher_name": 2,
+    "block_order": 2,
+    "start_time": "10:00",
+    "end_time": "10:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 3,
+  "fields": {
+    "course_name": "Algebra II",
+    "teacher_name": 2,
+    "block_order": 3,
+    "start_time": "11:00",
+    "end_time": "11:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 4,
+  "fields": {
+    "course_name": "Volleyball",
+    "teacher_name": 3,
+    "block_order": 1,
+    "start_time": "08:00",
+    "end_time": "08:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 5,
+  "fields": {
+    "course_name": "Economics",
+    "teacher_name": 3,
+    "block_order": 2,
+    "start_time": "09:00",
+    "end_time": "09:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 6,
+  "fields": {
+    "course_name": "Life Sciences",
+    "teacher_name": 3,
+    "block_order": 3,
+    "start_time": "10:00",
+    "end_time": "10:55"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "username": "scurry",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "first_name": "Stephen",
+    "last_name": "Curry",
+    "email": "scurry@warriors.com"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 4,
+  "fields": {
+    "user": 4,
+    "school": 1,
+    "role": 1,
+    "courses": [1,2,3]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "username": "kdurant",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "first_name": "Kevin",
+    "last_name": "Durant",
+    "email": "kdurant@warriors.com"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 5,
+  "fields": {
+    "user": 5,
+    "school": 1,
+    "role": 1,
+    "courses": [4,5,6]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "username": "kthompson",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "first_name": "Klay",
+    "last_name": "Thompson",
+    "email": "kthompson@warriors.com"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 6,
+  "fields": {
+    "user": 6,
+    "school": 1,
+    "role": 1,
+    "courses": [2,3,4]
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "username": "dgreen",
+    "password": "pbkdf2_sha256$24000$zA7qIuL2pbOX$0ouydM0sxPCCv6QAH0dObDScTIktV8xlSoU+gjYaXQ0=",
+    "first_name": "Draymond",
+    "last_name": "Green",
+    "email": "dgreen@warriors.com"
+  }
+},
+{
+  "model": "main.profile",
+  "pk": 7,
+  "fields": {
+    "user": 7,
+    "school": 1,
+    "role": 1,
+    "courses": [3,4,5]
+  }
+}
+]

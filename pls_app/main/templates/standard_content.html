@@ -1,0 +1,17 @@
+{% extends 'clean.html' %}
+
+{% block content %}
+
+  <div class="container">
+    <h2>{{ view.header }}</h2>
+  </div>
+
+  <div class="container">
+    <h4>{{ view.main_text }}</h4>
+  </div>
+
+  <div class="container">
+    <a href={% url 'home' %}><h3>Home</h3></a>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<div class="container well-lg">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4>{{ request.user.profile }}</h4>
+			<h3>{{ request.user.is_authenticated }}</h3>
+		</div>
+		<div class="panel-body">
+			<h2>My Class Schedule</h2>
+		</div>
+	</div>
+
+<!-- <div class="row">{{ view.credentials.school_slug }} &bull; {{ view.credentials.username }} &bull; {{ view.credentials.login_type }} </div> -->
+<table class="table table-striped table-hover table-responsive">
+	<thead>
+		<tr>
+			<th>Time</th>
+			<th>Teacher</th>
+			<th>Course Name</th>
+			<th>Details</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% for course in view.teacher_courses %}
+		<tr>
+			<td>{{ course.start_time|time:"g:i a" }}</td>
+			<td>{{ course.teacher_name }}</td>
+			<td>{{ course.course_name }}</td>
+			<td>
+				<a href="{% url 'course-detail' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"<input type="button" class="btn btn-default">...</a>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+	<div clas="row">
+		<a href="{% url 'add-course' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Course</button></a>
+	</div>
+</div>
+{% endblock %}

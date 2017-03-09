@@ -1,0 +1,11 @@
+{% block navbar %}
+
+{% if request.user.profile.is_teacher %}
+{% include 'includes/teacher_navbar.html' %}
+{% elif request.user.profile.is_student %}
+{% include 'includes/student_navbar.html' %}
+{% else %}
+{% include 'includes/main_navbar.html' %}
+{% endif %}
+
+{% endblock %}
