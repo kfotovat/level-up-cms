@@ -6,23 +6,27 @@
 <table class="table table-striped table-hover table-responsive">
 	<thead>
 		<tr>
-			<th>Course PK</th>
-			<th>Course Name</th>
 			<th>Name</th>
 			<th>Email</th>
+			<th>Progress Due</th>
+			<th>History</th>
 		</tr>
 	</thead>
 	<tbody>
 	{% for student in course_students %}
 		<tr>
-			<td>{{ student.course_name_id }}</td>
-			<td>{{ student.course_name }}</td>
-			<td>{{ student.full_name }}</td>
-			<td>{{ student.email }}</td>
+			<td>{{ student }}</td>
+			<td>{{ student.user.email }}</td>
+			<td>
+				<a href="{# url 'student-current-progress' #}">Progress.status</a>
+			</td>
+			<td>
+				<a href="{# url 'student-progress-history' #}"<input type="button" class="btn btn-default">...</a>
+			</td>
 		</tr>
 	{% endfor %}
 	</tbody>
  </table>
-	<a href="{# url 'add-course' #}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Course</button></a>
+	<a href="{# url 'add-student' #}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Course</button></a>
 </div>
 {% endblock %}

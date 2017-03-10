@@ -69,14 +69,21 @@ class MoreInfo(TemplateView):
 # # class Logout(generic.TemplateView):
 # #     template_name = 'logout.html'
 #
-# # working querysets:
-# # all_courses = Course.objects.al()
-# # origami = Course.objects.filter(course_name='Origami')
-# # riemen = Teacher.objects.get(full_name='Jennifer Riemen')
-# # riemen_courses = Course.objects.filter(teacher_name=riemen)
-# # riemen_students = Student.objects.filter(courses__in=riemen_courses)
+# working querysets:
+# all_courses = Course.objects.all()
+# origami = Course.objects.get(course_name='Origami')
+# origami_list = Course.objects.filter(course_name='Origami')
+# origami_students = Profile.objects.filter(courses__in=origami)
+# origami_students = origami.profile_set.all()
+
+# riemen = User.objects.filter(first_name='Jennifer',last_name='Riemen')
+# riemen = User.objects.get(username='jriemen')
+# riemen_courses = Course.objects.filter(teacher_name=riemen.profile)
+# riemen_students = Profile.objects.filter(role=1,courses__in=riemen_courses)
 #
-# # ??? what about origami.student_set.all()??
+# kdurant = User.objects.get(username='kdurant')
+# kdurant_courses = kdurant.profile.courses.all()
+# kdurant_teachers = [course.teacher_name for course in kdurant_courses]
 #
 #
 # generic and class-based views
@@ -110,14 +117,27 @@ class UpdateCourseInfo(UpdateView):
     template_name = "teachers/course_form.html"
 
 
-class DeleteCourse(DeleteView):
-    model = Course
-    context = None
-    # fields = "__all__"
-    success_url = reverse_lazy('teacher-courses', kwargs=context)
+class CourseStudents(ListView):
+    model = Profile
+    template_name = "teachers/course_students.html"
+    context_object_name = "course_students"
 
-    def credentials(self):
-        self.context = get_credentials(self)
+    def get_queryset(self):
+        print "just before queryset"
+        course = Course.objects.get(pk=self.kwargs['pk'])
+        print "course", course
+        return course.profile_set.all()
+        # return Profile.objects.filter(courses__in=course)
+
+
+# need to fix this guy
+# class DeleteCourse(DeleteView):
+#     model = Course
+#     # fields = "__all__"
+#     success_url = reverse_lazy('teacher-courses', kwargs=context)
+#
+#     def credentials(self):
+#         return get_credentials(self)
 
     # def get_object(self, queryset=None):
     #     obj = super(DeleteCourse, self).get_object()

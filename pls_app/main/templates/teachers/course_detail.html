@@ -38,12 +38,12 @@
 							<!-- Update Course -->
 							<a href="{% url 'update-course' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-primary" value="Update Course Info"></a>
 							<!-- List Students -->
-							<a href="{# url 'course-students' course.pk #}"><input type="button" class="btn btn-primary" value="List Students"></a>
+							<a href="{% url 'course-students' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-primary" value="List Students"></a>
 							<!-- Return to Course List -->
 							<a href="{% url 'teacher-courses' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-default" value="Back to Course List"></a>
 							<!-- Delete Course -->
 							<form method="post" style="display: inline"
-							action="{% url 'delete-course' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}">
+							action="{# url 'delete-course' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug #}">
 								{% csrf_token %}
 								<!-- {{ form.as_p }} -->
 								<!-- <input type="hidden" name="course_pk" value="{{ course.pk }}"/> -->
