@@ -6,9 +6,7 @@ urlpatterns = [
     url(r'^mission-statement/$', views.MissionStatement.as_view(), name='mission-statement'),
     url(r'^enroll-your-school/$', views.EnrollYourSchool.as_view(), name='enroll'),
     url(r'^more-info/$', views.MoreInfo.as_view(), name='more-info'),
-    # url(r'^(?P<school_slug>\w+)/students/$', views.Students.as_view(), name='students'),
     url(r'^(?P<school_slug>[a-z-]+)/(?P<login_type>\w+)/(?P<username>\w+)/welcome/$', views.Welcome.as_view(), name='welcome'),
-    # url(r'^(?P<school_slug>[a-z-]+)/(?P<login_type>\w+)/(?P<username>\w+)/welcome/$', views.Welcome.as_view(), name='welcome'),
     url(r'^(?P<school_slug>[a-z-]+)/(?P<login_type>\w+)/(?P<username>\w+)/my-courses/$', views.TeacherCourseList.as_view(), name='teacher-courses'),
     url(r'^(?P<school_slug>[a-z-]+)/(?P<login_type>\w+)/(?P<username>\w+)/my-courses/(?P<pk>\d+)/$', views.TeacherCourseDetail.as_view(), name='course-detail'),
     url(r'^(?P<school_slug>[a-z-]+)/(?P<login_type>\w+)/(?P<username>\w+)/my-courses/add-course/$', views.AddCourse.as_view(), name='add-course'),
@@ -19,6 +17,7 @@ urlpatterns = [
     # url(r'^teachers/(?P<username>\w+)/welcome/$', views.Welcome.as_view(), name='student-current-progress'),
     # url(r'^teachers/(?P<username>\w+)/welcome/$', views.Welcome.as_view(), name='student-progress-history'),
     # url(r'^teachers/(?P<username>\w+)/welcome/$', views.Welcome.as_view(), name='add-student'),
+
     # url(r'^teachers/(?P<username>\w+)/welcome/$', views.Welcome.as_view(), name='welcome'),
     # url(r'^(?P<school_slug>\w+)/(?P<login_type>\w+)/(?P<username>\w+)/welcome/$', views.welcome, name='welcome'),
 ]

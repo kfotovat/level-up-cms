@@ -145,42 +145,54 @@ class Course(models.Model):
 # 	# sets redirect after adding a new course
 # 	def get_absolute_url(self):
 # 		return reverse('course-students', kwargs={'pk':self.pk})
-#
-#
-#
-# class Progress(models.Model):
-# 	class_date = models.DateTimeField()
-# 	status = models.CharField(max_length=30, default="Pending")
-# 	submitted = models.DateTimeField(auto_now_add=True, auto_now=False)
-# 	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
-#
-# 	behavior = models.PositiveIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
-# 	# BEHAVIOR_CHOICES = (1, 2, 3, 4, 5)
-# 	# behavior2 = models.PositiveIntegerField(choices=BEHAVIOR_CHOICES)
-# 	on_time = models.BooleanField(default=True)
-# 	electronics = models.BooleanField(default=True)
-# 	personal_goals = models.BooleanField(default=True)
-# 	leaving_class = models.BooleanField(default=True)
-# 	teacher_comments = models.TextField()
-#
-# 	# fk
-# 	student_name = models.ForeignKey("Student", null=True, blank=True)
-# 	teacher_name = models.ForeignKey("Teacher", null=True, blank=True)
-#
-# 	def __unicode__(self):
-# 		return self.student_name + " - " + self.class_date
-#
-#
-# # break each level out into a level class(number, description)?
-# class BehaviorLevelsDefinition(models.Model):
-# 	custom_name = models.CharField(max_length=40, null=False)
-# 	level1 = models.TextField()
-# 	level2 = models.TextField()
-# 	level3 = models.TextField()
-# 	level4 = models.TextField()
-# 	level5 = models.TextField()
-# 	default_weights = {5:100, 4:80, 3:60, 2:40, 1:20}
-# 	weights = {}
-#
-# 	def __unicode__(self):
-# 		return self.custom_name
+
+
+
+class Progress(models.Model):
+	PENDING = 1
+	SUBMITTED = 2
+	EDITED = 3
+	STATUS_CHOICES = (
+		(PENDING, 'Pending'),(SUBMITTED, 'Submitted'),(EDITED, 'Edited'),
+		)
+	# class_date aka generated --progress won't be generated until class begins?
+	class_date = models.DateTimeField()
+	status = models.PositiveSmallIntegerField(choices=STATUS_CHOICES, default=1)
+	submitted = models.DateTimeField(auto_now_add=True, auto_now=False)
+	updated = models.DateTimeField(auto_now_add=False, auto_now=True)
+
+	behavior = models.PositiveSmallIntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
+	# BEHAVIOR_CHOICES = (
+		# (1, ___),(2, ___),(3, ___),(4, ___),(5, ___)
+		# )
+	# behavior2 = models.PositiveIntegerField(choices=BEHAVIOR_CHOICES)
+	on_time = models.BooleanField(default=True)
+	electronics = models.BooleanField(default=True)
+	personal_goals = models.BooleanField(default=True)
+	leaving_class = models.BooleanField(default=True)
+	teacher_comments = models.TextField()
+
+	# fk
+	# must validate that this profile is a student
+	student_name = models.ForeignKey("Profile", null=True, blank=True)
+	course_name = models.ForeignKey("Course", null=True, blank=True)
+
+	def __unicode__(self):
+		return self.student_name + " - " + self.class_date
+
+
+# break each level out into a level class(number, description)?
+class BehaviorLevelsDefinition(models.Model):
+	# must validate that this profile is a teacher
+	created_by = models.ForeignKey("Profile", null=True, blank=True)
+	custom_name = models.CharField(max_length=40, null=False)
+	level1 = models.TextField()
+	level2 = models.TextField()
+	level3 = models.TextField()
+	level4 = models.TextField()
+	level5 = models.TextField()
+	default_weights = {5:100, 4:80, 3:60, 2:40, 1:20}
+	weights = {}
+
+	def __unicode__(self):
+		return self.custom_name
