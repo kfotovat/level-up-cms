@@ -174,17 +174,20 @@ class Progress(models.Model):
 
 	# fk
 	# must validate that this profile is a student
-	student_name = models.ForeignKey("Profile", null=True, blank=True)
+	student_name = models.ForeignKey("Profile", null=True, blank=True, limit_choices_to={'role': 1})
+	# must validate that this course is the 'current' or selected course
 	course_name = models.ForeignKey("Course", null=True, blank=True)
 
 	def __unicode__(self):
 		return self.student_name + " - " + self.class_date
 
+	class Meta:
+		verbose_name_plural = "Progresses"
 
 # break each level out into a level class(number, description)?
 class BehaviorLevelsDefinition(models.Model):
 	# must validate that this profile is a teacher
-	created_by = models.ForeignKey("Profile", null=True, blank=True)
+	created_by = models.ForeignKey("Profile", null=True, blank=True, limit_choices_to={'role': 2})
 	custom_name = models.CharField(max_length=40, null=False)
 	level1 = models.TextField()
 	level2 = models.TextField()

@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 # from django.conf import settings
 from django.contrib.auth.models import User
-from .models import Profile, Course, School
+from .models import Profile, Course, School, Progress
 
 # django.setup()
 # from django.db.models.loading import cache as model_cache
@@ -55,3 +55,4 @@ admin.site.register(User, CustomUserAdmin)
 # admin.site.register(Student)
 # admin.site.register(Teacher)
 admin.site.register(Course, CourseAdmin)
+admin.site.register(Progress)
