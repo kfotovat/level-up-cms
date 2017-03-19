@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Course, Profile, School
+from .models import Course, Profile, School, Progress
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404
 # from .forms import StudentForm, TeacherForm
@@ -15,6 +15,14 @@ from django.contrib.auth.models import User
 def get_credentials(view, dict={}):
     creds = view.request.user.profile.add_credentials_to_context(dict)
     return creds
+
+def get_progress_data(student_username, course_id):
+    student_user = User.objects.get(username=student_username)
+    progress_history = Progress.objects.filter(course_name=course_id, student_name=student_user.profile)
+    if not progress_history:
+        return [{"status": "No data"}]
+    return progress_history
+
 
 # basic views
 class Home(TemplateView):
@@ -120,15 +128,73 @@ class UpdateCourseInfo(UpdateView):
 class CourseStudents(ListView):
     model = Profile
     template_name = "teachers/course_students.html"
-    context_object_name = "course_students"
+    # course_students_current_progress = None
+    # course_students_all_progress = None
 
-    def get_queryset(self):
-        print "just before queryset"
-        course = Course.objects.get(pk=self.kwargs['pk'])
-        print "course", course
-        return course.profile_set.all()
-        # return Profile.objects.filter(courses__in=course)
+    def current_course(self):
+        return Course.objects.get(pk=self.kwargs['pk'])
 
+    def current_course_pk(self):
+        current_course = Course.objects.get(pk=self.kwargs['pk'])
+        return current_course.pk
+
+    def course_students_all_progress(self):
+        current_course = Course.objects.get(pk=self.kwargs['pk'])
+        course_students = current_course.profile_set.all()
+        if not course_students:
+            return []
+        # course_students_all_progress = [(student, get_progress_data(student.user.username, self.kwargs['pk'])) for student in course_students]
+        # self.course_students_all_progress = course_students_all_progress
+        # self.course_students_current_progress = [(student, progress[0]) for student, progress in course_students_all_progress]
+        return [(student, get_progress_data(student.user.username, self.kwargs['pk'])) for student in course_students]
+
+    def course_students_current_progress(self):
+        current_course = Course.objects.get(pk=self.kwargs['pk'])
+        course_students = current_course.profile_set.all()
+        if not course_students:
+            return []
+        course_students_all_progress = [(student, get_progress_data(student.user.username, self.kwargs['pk'])) for student in course_students]
+        return [(student, progress[0]) for student, progress in course_students_all_progress if progress]
+
+    # def course_students_progress(self):
+        # self.course_students_progress = [get_progress_data(student.user.username, self.current_course_pk) for student in self.course_students]
+        # return [get_progress_data(student.user.username, self.current_course_pk) for student in self.course_students]
+        # return Progress.objects.filter(course=self.current_course)
+    #
+    # def get_queryset(self):
+    #     # course = self.current_course
+    #     current_course = Course.objects.get(pk=self.kwargs['pk'])
+    #     self.course_students = current_course.profile_set.all()
+    #     return current_course.profile_set.all()
+
+class RecentProgressHistory(ListView):
+    model = Progress
+    fields = "__all__"
+    template_name = "teachers/student_progress_history.html"
+    context_object_name = "recent_progress_history"
+    all_progress_history = None
+    recent_progress_history = None
+    current_progress = None
+    all_progress_history_length = 0
+
+    def get_queryset(self, *args, **kwargs):
+        # limit query to 10(?) most recent progresses by given student
+        student_username = self.kwargs['student']
+        course_id = self.kwargs['pk']
+        progress_history = get_progress_data(student_username, course_id)
+        # student_user = User.objects.get(username=student_username)
+        # progress_history = Progress.objects.filter(course_name=self.kwargs['pk'], student_name=student_user.profile)
+        self.all_progress_history = progress_history[6:]
+        self.recent_progress_history = progress_history[1:6]
+        self.current_progress = progress_history[0]
+        self.all_progress_history_length = len(progress_history)
+        return progress_history
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(RecentProgressHistory, self).get_context_data(*args, **kwargs)
+        context = self.request.user.profile.add_credentials_to_context(context)
+        context['student'] = self.kwargs['student']
+        return context
 
 # need to fix this guy
 # class DeleteCourse(DeleteView):
@@ -166,16 +232,6 @@ class CourseStudents(ListView):
     #     context = user.add_credentials_to_context({'pk':self.kwargs['pk']})
     #     return HttpResponseRedirect(reverse_lazy('teacher_courses', kwargs=context))
 
-# class CourseStudentList(generic.list.ListView):
-#     model = Student
-#
-#     template_name = "teachers/course-students.html"
-#     context_object_name = "course_students"
-#
-#     # need to dynamically pass current pages course pk
-#     def get_queryset(self):
-#         return Student.objects.filter(course_name_id=6)
-#
 # class AddStudent(generic.edit.CreateView):
 #     model = Student
 #     fields = "__all__"
@@ -183,7 +239,7 @@ class CourseStudents(ListView):
 #
 class CourseDetail(DetailView):
     pass
-#
+
 # def auth_view(request):
 #     email = request.POST.get('email', None)
 #     password = request.POST.get('password', None)

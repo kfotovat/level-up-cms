@@ -9,7 +9,7 @@
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h4>{{ request.user.profile }}</h4>
-			<h3>{{ request.user.is_authenticated }}</h3>
+			<h5>Logged in: {{ request.user.is_authenticated }}</h5>
 		</div>
 		<div class="panel-body">
 			<h2>My Class Schedule</h2>
@@ -27,16 +27,25 @@
 		</tr>
 	</thead>
 	<tbody>
-	{% for course in view.teacher_courses %}
+	{% if view.teacher_courses %}
+		{% for course in view.teacher_courses %}
+			<tr>
+				<td>{{ course.start_time|time:"g:i a" }}</td>
+				<td>{{ course.teacher_name }}</td>
+				<td>{{ course.course_name }}</td>
+				<td>
+					<a href="{% url 'course-detail' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"<input type="button" class="btn btn-default">...</a>
+				</td>
+			</tr>
+		{% endfor %}
+	{% else %}
 		<tr>
-			<td>{{ course.start_time|time:"g:i a" }}</td>
-			<td>{{ course.teacher_name }}</td>
-			<td>{{ course.course_name }}</td>
-			<td>
-				<a href="{% url 'course-detail' pk=course.pk username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"<input type="button" class="btn btn-default">...</a>
-			</td>
+			<td>--</td>
+			<td>--</td>
+			<td>--</td>
+			<td>--</td>
 		</tr>
-	{% endfor %}
+	{% endif %}
 	</tbody>
 </table>
 	<div clas="row">

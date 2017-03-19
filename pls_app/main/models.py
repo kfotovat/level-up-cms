@@ -179,10 +179,11 @@ class Progress(models.Model):
 	course_name = models.ForeignKey("Course", null=True, blank=True)
 
 	def __unicode__(self):
-		return self.student_name + " - " + self.class_date
+		return "{} - {}".format(self.student_name, self.class_date)
 
 	class Meta:
-		verbose_name_plural = "Progresses"
+		ordering = ['-class_date']
+		verbose_name_plural = 'Progresses'
 
 # break each level out into a level class(number, description)?
 class BehaviorLevelsDefinition(models.Model):

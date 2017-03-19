@@ -140,6 +140,28 @@
   }
 },
 {
+  "model": "main.course",
+  "pk": 7,
+  "fields": {
+    "course_name": "Geography",
+    "teacher_name": 3,
+    "block_order": 1,
+    "start_time": "07:00",
+    "end_time": "07:55"
+  }
+},
+{
+  "model": "main.course",
+  "pk": 8,
+  "fields": {
+    "course_name": "Computer Science",
+    "teacher_name": 2,
+    "block_order": 4,
+    "start_time": "13:00",
+    "end_time": "13:55"
+  }
+},
+{
   "model": "auth.user",
   "pk": 4,
   "fields": {
