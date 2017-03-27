@@ -25,7 +25,7 @@
 					<a href="{# url 'student-current-progress' #}">{{ progress.status }}</a>
 				</td>
 				<td>
-					<a href="{# url 'student-progress-history' pk=view.current_course.pk student=student.user.username school_slug=request.user.profile.school.slug login_type=request.user.profile.get_role username=request.user.username #}"<input type="button" class="btn btn-default">...</a>
+					<a href="{% url 'student-progress-history' pk=view.current_course.pk student=student.user.username school_slug=request.user.profile.school.slug login_type=request.user.profile.get_role username=request.user.username %}"<input type="button" class="btn btn-default">...</a>
 				</td>
 			</tr>
 		{% endfor %}
@@ -39,10 +39,12 @@
 	{% endif %}
 	</tbody>
  </table>
-	<a href="{# url 'add-student' #}"><button class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>&nbsp; Add Student</button></a>
-	<p>{{ view.current_course }}</p>
+	<!-- Return to Course List -->
+	<a href="{% url 'teacher-courses' username=request.user.username login_type=request.user.profile.get_role school_slug=request.user.profile.school.slug %}"><input type="button" class="btn btn-primary" value="Back to Course List"></a>
+	<!-- Inspect variables -->
+	<!-- <p>{{ view.current_course }}</p>
 	<p>{{ view.current_course_pk }}</p>
 	<p>{{ view.course_students_current_progress }}</p>
-	<p>{{ view.course_students_all_progress }}</p>
+	<p>{{ view.course_students_all_progress }}</p> -->
 </div>
 {% endblock %}

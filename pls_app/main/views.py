@@ -176,6 +176,19 @@ class RecentProgressHistory(ListView):
     recent_progress_history = None
     current_progress = None
     all_progress_history_length = 0
+    current_course = None
+    current_student = None
+
+    def get_course(self, *args, **kwargs):
+        course = Course.objects.get(pk=self.kwargs['pk'])
+        self.current_course = course
+        return course
+
+    def get_student(self, *args, **kwargs):
+        student_user = User.objects.get(username=self.kwargs['student'])
+        student = Profile.objects.get(user=student_user)
+        self.current_student = student
+        return student
 
     def get_queryset(self, *args, **kwargs):
         # limit query to 10(?) most recent progresses by given student
@@ -184,6 +197,8 @@ class RecentProgressHistory(ListView):
         progress_history = get_progress_data(student_username, course_id)
         # student_user = User.objects.get(username=student_username)
         # progress_history = Progress.objects.filter(course_name=self.kwargs['pk'], student_name=student_user.profile)
+        self.get_course()
+        self.get_student()
         self.all_progress_history = progress_history[6:]
         self.recent_progress_history = progress_history[1:6]
         self.current_progress = progress_history[0]
@@ -195,6 +210,10 @@ class RecentProgressHistory(ListView):
         context = self.request.user.profile.add_credentials_to_context(context)
         context['student'] = self.kwargs['student']
         return context
+
+
+class CurrentProgress(DetailView):
+    pass
 
 # need to fix this guy
 # class DeleteCourse(DeleteView):
