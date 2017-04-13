@@ -10,7 +10,13 @@
 }
 
 body {
-  padding-top: 100px;
+  padding-top: 150px;
+  background-color: #92befc;
+}
+
+#bg-body {
+  padding-top: 150px;
+  background: #92befc url('../img/school-children-png-28319.png') bottom center no-repeat;
 }
 
 #testes {

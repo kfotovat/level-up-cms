@@ -18,9 +18,11 @@ from django.conf.urls import url, include
 from django.contrib import admin
 # from django.contrib.auth import views as auth_views
 from account.views import login_view, logout_view
+from main.views import styles_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^styles/', styles_view, name='styles'),
     url(r'^login/(?P<login_type>\w+)/', login_view, name='login'),
     url(r'^login/$', login_view, name='login'),
     url(r'^logout/$', logout_view, name='logout'),

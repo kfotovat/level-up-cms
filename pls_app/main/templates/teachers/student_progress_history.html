@@ -18,20 +18,26 @@
       <th>Personal Goals</th>
       <th>Leaving Class</th>
 			<th>Comments</th>
+      <th>Detail</th>
 		</tr>
 	</thead>
 	<tbody>
     {% for item in view.recent_progress_history %}
 		<tr>
-      <th>{{ item.class_date|date:"n-j-Y" }}</th>
-      <th>{{ item.submitted|date:"n-j" }} {{ item.submitted|time:"g:i a" }}</th>
-			<th>{{ item.status }}</th>
-			<th>{{ item.behavior }}</th>
-      <th>{{ item.on_time }}</th>
-      <th>{{ item.electronics }}</th>
-      <th>{{ item.personal_goals }}</th>
-      <th>{{ item.leaving_class }}</th>
-			<th>{{ item.teacher_comments }}</th>
+      <td>{{ item.class_date|date:"n-j-Y" }}</td>
+      <td>{{ item.submitted|date:"n-j" }} {{ item.submitted|time:"g:i a" }}</td>
+			<td>{{ item.status }}</td>
+			<td>{{ item.behavior }}</td>
+      <td>{{ item.on_time }}</td>
+      <td>{{ item.electronics }}</td>
+      <td>{{ item.personal_goals }}</td>
+      <td>{{ item.leaving_class }}</td>
+			<td>{{ item.teacher_comments }}</td>
+      <td>
+        <a href="{# url 'student-progress-history' pk=view.current_course.pk student=student.user.username school_slug=request.user.profile.school.slug login_type=request.user.profile.get_role username=request.user.username #}">
+          <button class="btn btn-default">...</button>
+        </a>
+      </td>
 		</tr>
     {% endfor %}
 	</tbody>

@@ -24,6 +24,11 @@ def get_progress_data(student_username, course_id):
     return progress_history
 
 
+# styling view
+def styles_view(request):
+    return render(request, "styles.html", {})
+
+
 # basic views
 class Home(TemplateView):
     template_name = 'index.html'
