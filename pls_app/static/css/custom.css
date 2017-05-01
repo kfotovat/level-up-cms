@@ -1,0 +1,198 @@
+.jumbotron {
+  padding-top: 0px;
+  padding-bottom: 50px;
+  margin-bottom: 30px;
+  font-family: 'Roboto';
+  height: 350px;
+  color: inherit;
+  background: url('../../images/stone-brick-wall-red-00252.jpg') no-repeat center center;
+  background-color: transparent;
+}
+
+body {
+  padding-top: 150px;
+  background-color: #92befc;
+}
+
+#bg-body {
+  padding-top: 150px;
+  background: #92befc url('../img/school-children-png-28319.png') bottom center no-repeat;
+}
+
+#testes {
+  background-color: #B7A2F1;
+  color: white;
+  text-align: center;
+}
+
+.container .navpush {
+  padding-top: 200px;
+}
+
+#showcase {
+	background-color: #B7A2F1;
+	color: white;
+}
+
+#tagline {
+	color: #eee;
+	text-decoration:
+}
+
+th {
+  text-align: center;
+}
+
+td {
+	text-align: center;
+}
+
+td #table-input {
+	display: block;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	width: 100%;
+}
+
+::-webkit-input-placeholder {
+   text-align: center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align: center;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align: center;
+}
+
+:-ms-input-placeholder {
+   text-align: center;
+}
+
+label {
+  display: block;
+  width: 15%;
+}
+
+.splash-navbar {
+  padding-top: 200px;
+  background: transparent;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+/*.splash {
+  padding-top: 50px;
+  background: transparent;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+*/
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 100px;
+    height: 100px;
+    padding-top: 0;
+}
+
+.navbar-nav ul li a {
+    line-height: 50px;
+    height: 50px;
+}
+
+#lower-landing {
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-color: white;
+}
+
+#lower-landing .glyphicon {
+  display: block;
+  text-align: center;
+  font-size: 50px;
+  padding-top: 30px;
+}
+
+#lower-landing div {
+  padding-left: 30px;
+  padding-right: 30px;
+  text-align: center;
+}
+
+#progressformdiv {
+  display: flex;
+  justify-content: center;
+  padding-top: 0px;
+  padding-bottom: 50px;
+}
+
+#landing-body {
+  font-size: 18px;
+  size: 100%;
+  background-image: url('../../img/circles_pattern_blue_white.png');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  padding-top: 200px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+#student-body {
+  font-size: 18px;
+  size: 100%;
+  background-image: url('../../img/orange_circles.jpg');
+  background-size: 100%;
+  background-repeat: repeat;
+  padding-top: 200px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+#teacher-body {
+  font-size: 18px;
+  background-image: url('../../img/hazy_green_circles.jpg');
+  background-size: 100%;
+  background-repeat: repeat;
+  padding-top: 200px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+
+.gridruler {
+  background-color: SkyBlue;
+  height: 100px;
+  width: 100px;
+  border: 20px;
+  border-color: white;
+  display: inline-block;
+}
+
+/*formset attributes here*/
+
+.formset-row {
+
+}
+.formset-header {
+
+}
+.formset-radio {
+
+}
+.formset-behavior {
+
+}
+.formset-row {
+
+}
