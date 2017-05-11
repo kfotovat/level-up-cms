@@ -1,10 +1,12 @@
-# Positive Level System
+# Level Up CMS
 
 ### Robust, multi-user CMS based on Python's Django framework
 
 ### Description:
 
-PositiveLevelSystem is a beta program serving behavioral consultation specialists in the educational sector, developed in Albuquerque, NM. The program leaders felt many of its elements could be automated and scaled to better serve greater numbers of students and teachers in need through a custom CMS. This web project aims to realize that goal.
+Rebranded as Level Up!
+
+  PositiveLevelSystem was a beta program serving behavioral consultation specialists in the educational sector, developed in Albuquerque, NM. The program leaders felt many of its elements could be automated and scaled to better serve greater numbers of students and teachers in need through a custom CMS. This web project aims to realize that goal.
 
 ### Features:
 
